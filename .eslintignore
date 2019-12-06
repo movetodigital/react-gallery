@@ -2,3 +2,5 @@ node_modules/
 dist
 **/*.snap
 *.yml
+
+__tests__/__snapshots__
