@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Mosaic /> should render and match snapshot 1`] = `
+<div>
+  <img
+    alt="hello"
+    src="https://source.unsplash.com/1600x900"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+    title="Sample title"
+  />
+  <br />
+  <img
+    alt="hello"
+    src="https://source.unsplash.com/1600x901"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+    title="Sample title"
+  />
+  <br />
+  <img
+    alt="hello"
+    src="https://source.unsplash.com/1600x902"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+    title="Sample title"
+  />
+  <br />
+  <img
+    alt="hello"
+    src="https://source.unsplash.com/1600x903"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+    title="Sample title"
+  />
+  <br />
+</div>
+`;
