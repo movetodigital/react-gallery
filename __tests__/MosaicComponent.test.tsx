@@ -4,12 +4,7 @@ import * as React from 'react';
 import {Mosaic} from '../src/Mosaic';
 
 const hydratedProps = {
-  images: [
-      'x',
-      'x',
-      'x',
-      'x'
-  ]
+  images: ['x', 'x', 'x', 'x'],
 };
 
 describe('<Mosaic />', () => {
