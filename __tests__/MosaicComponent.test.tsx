@@ -4,7 +4,30 @@ import * as React from 'react';
 import {Mosaic} from '../src/Mosaic';
 
 const hydratedProps = {
-  images: ['x', 'x', 'x', 'x'],
+  images: [
+    {
+      src: '/image/name/1',
+      width: 500,
+      height: 500,
+    },
+    {
+      src: '/image/name/1',
+      width: 500,
+      height: 500,
+    },
+    {
+      src: '/image/name/1',
+      width: 500,
+      height: 500,
+    },
+    {
+      src: '/image/name/1',
+      width: 500,
+      height: 500,
+    },
+  ],
+  gridColumns: 5,
+  gridGutter: 1,
 };
 
 describe('<Mosaic />', () => {

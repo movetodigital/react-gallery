@@ -1,50 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Mosaic /> should render and match snapshot 1`] = `
-<div>
-  <img
-    alt="hello"
-    src="https://source.unsplash.com/1600x900"
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-    title="Sample title"
-  />
-  <br />
-  <img
-    alt="hello"
-    src="https://source.unsplash.com/1600x901"
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-    title="Sample title"
-  />
-  <br />
-  <img
-    alt="hello"
-    src="https://source.unsplash.com/1600x902"
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-    title="Sample title"
-  />
-  <br />
-  <img
-    alt="hello"
-    src="https://source.unsplash.com/1600x903"
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
-    title="Sample title"
-  />
-  <br />
-</div>
+<styled.div>
+  <styled.div
+    height={240}
+    key="0_0.5"
+    padding="0.5% 0.5% 0.5% 0%"
+    width={19.2}
+  >
+    <div>
+      <styled.img
+        key="/image/name/1"
+        src="/image/name/1"
+      />
+    </div>
+  </styled.div>
+  <styled.div
+    height={240}
+    key="1_0.5"
+    padding="0.5% 0.5% 0.5% 0.5%"
+    width={19.2}
+  >
+    <div>
+      <styled.img
+        key="/image/name/1"
+        src="/image/name/1"
+      />
+    </div>
+  </styled.div>
+  <styled.div
+    height={240}
+    key="2_0.5"
+    padding="0.5% 0.5% 0.5% 0.5%"
+    width={19.2}
+  >
+    <div>
+      <styled.img
+        key="/image/name/1"
+        src="/image/name/1"
+      />
+    </div>
+  </styled.div>
+  <styled.div
+    height={240}
+    key="3_0.5"
+    padding="0.5% 0.5% 0.5% 0.5%"
+    width={19.2}
+  >
+    <div>
+      <styled.img
+        key="/image/name/1"
+        src="/image/name/1"
+      />
+    </div>
+  </styled.div>
+</styled.div>
 `;
