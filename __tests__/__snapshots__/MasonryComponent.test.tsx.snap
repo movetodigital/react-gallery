@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Masonry /> should render and match snapshot 1`] = `
+<styled.div
+  gridColumns={5}
+  gridGutter={1}
+>
+  <styled.div
+    gridGutter={1}
+    key="0_1"
+  >
+    <div>
+      <styled.img
+        key="/image/name/1"
+        src="/image/name/1"
+      />
+    </div>
+  </styled.div>
+  <styled.div
+    gridGutter={1}
+    key="1_1"
+  >
+    <div>
+      <styled.img
+        key="/image/name/1"
+        src="/image/name/1"
+      />
+    </div>
+  </styled.div>
+  <styled.div
+    gridGutter={1}
+    key="2_1"
+  >
+    <div>
+      <styled.img
+        key="/image/name/1"
+        src="/image/name/1"
+      />
+    </div>
+  </styled.div>
+  <styled.div
+    gridGutter={1}
+    key="3_1"
+  >
+    <div>
+      <styled.img
+        key="/image/name/1"
+        src="/image/name/1"
+      />
+    </div>
+  </styled.div>
+</styled.div>
+`;

@@ -3,55 +3,63 @@
 exports[`<Mosaic /> should render and match snapshot 1`] = `
 <styled.div>
   <styled.div
-    height={240}
     key="0_0.5"
     padding="0.5% 0.5% 0.5% 0%"
+    ratio={100}
     width={19.2}
   >
     <div>
-      <styled.img
-        key="/image/name/1"
-        src="/image/name/1"
-      />
+      <styled.div>
+        <styled.img
+          key="/image/name/1"
+          src="/image/name/1"
+        />
+      </styled.div>
     </div>
   </styled.div>
   <styled.div
-    height={240}
     key="1_0.5"
     padding="0.5% 0.5% 0.5% 0.5%"
+    ratio={100}
     width={19.2}
   >
     <div>
-      <styled.img
-        key="/image/name/1"
-        src="/image/name/1"
-      />
+      <styled.div>
+        <styled.img
+          key="/image/name/1"
+          src="/image/name/1"
+        />
+      </styled.div>
     </div>
   </styled.div>
   <styled.div
-    height={240}
     key="2_0.5"
     padding="0.5% 0.5% 0.5% 0.5%"
+    ratio={100}
     width={19.2}
   >
     <div>
-      <styled.img
-        key="/image/name/1"
-        src="/image/name/1"
-      />
+      <styled.div>
+        <styled.img
+          key="/image/name/1"
+          src="/image/name/1"
+        />
+      </styled.div>
     </div>
   </styled.div>
   <styled.div
-    height={240}
     key="3_0.5"
     padding="0.5% 0.5% 0.5% 0.5%"
+    ratio={100}
     width={19.2}
   >
     <div>
-      <styled.img
-        key="/image/name/1"
-        src="/image/name/1"
-      />
+      <styled.div>
+        <styled.img
+          key="/image/name/1"
+          src="/image/name/1"
+        />
+      </styled.div>
     </div>
   </styled.div>
 </styled.div>

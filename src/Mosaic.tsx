@@ -4,7 +4,7 @@ import styled from 'styled-components';
 type FunctionName = (n: object) => any;
 
 interface ImageItemProps {
-  src: string;
+  src?: string;
   title?: string;
   alt?: string;
 }
@@ -13,7 +13,19 @@ interface ComponentProps {
   images: Array<ImageItemProps>;
   gridColumns: number;
   gridGutter: number;
+  aspectRatio?: number;
   imageRenderer?: FunctionName;
+}
+
+interface StyleItemProps {
+  readonly width: number;
+  readonly padding: string;
+  readonly ratio: number;
+}
+
+interface RendererProps {
+  props: ImageItemProps;
+  key: number;
 }
 
 const Images = styled.div`
@@ -21,12 +33,6 @@ const Images = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
 `;
-
-interface StyleItemProps {
-  readonly width: number;
-  readonly padding: string;
-  readonly height: number;
-}
 
 const Item = styled.div<StyleItemProps>`
   color: white;
@@ -36,35 +42,44 @@ const Item = styled.div<StyleItemProps>`
   margin: ${props => props.padding};
 
   > div {
-    height: ${props => props.height}px;
+    width: 100%;
+    padding-top: ${props => props.ratio}%;
   }
 `;
 
 const DefaultImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover !important;
-  overflow: hidden !important;
+  object-position: 50% 50%;
+  object-fit: cover;
 `;
 
-interface RendererProps {
-  props: ImageItemProps;
-  key: number;
-}
+const DefaultImageContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+`;
 
 const defaultRender = ({props: {src, title, alt}, key}: RendererProps) => {
-  return <DefaultImage key={src} src={src} title={title} alt={alt} />;
+  return (
+    <DefaultImageContainer>
+      <DefaultImage key={src} src={src} title={title} alt={alt} />
+    </DefaultImageContainer>
+  );
 };
 
 const Mosaic: React.FunctionComponent<ComponentProps> = ({
   images,
   gridColumns,
   gridGutter,
+  aspectRatio = 1,
   imageRenderer = defaultRender,
 }) => {
   const gutter = gridGutter / 2;
   const width = (100 - (gridColumns - 1) * gutter * 2) / gridColumns;
-  const height = 1200 / gridColumns;
+  const ratio = 100 / aspectRatio;
 
   return (
     <Images>
@@ -75,7 +90,7 @@ const Mosaic: React.FunctionComponent<ComponentProps> = ({
           padding={`${gutter}% ${
             (index + 1) % gridColumns === 0 ? '0' : gutter
           }% ${gutter}% ${index % gridColumns === 0 ? '0' : gutter}%`}
-          height={height}
+          ratio={ratio}
         >
           <div>{imageRenderer({props: el, key: index})}</div>
         </Item>
