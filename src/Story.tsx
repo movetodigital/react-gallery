@@ -19,13 +19,14 @@ interface ComponentProps {
   albums: Array<AlbumProps>;
   gridGutter: number;
   rowHeight?: string;
-  aspectRatio?: number;
   imageRenderer?: FunctionName;
-  align?: 'center' | 'left';
+  albumTitleRenderer?: FunctionName;
+  align?: 'center' | 'left' | 'right';
 }
 
 interface StyleItemProps {
   readonly height: string;
+  readonly width: string;
   readonly padding: string;
   readonly ratio: number;
   readonly aspectRatio: number;
@@ -38,6 +39,9 @@ interface StyleAlbumProps {
 interface RendererProps {
   props: ImageItemProps;
   key: number;
+}
+interface RendererTitleProps {
+  props: AlbumProps;
 }
 
 const Images = styled.div<StyleAlbumProps>`
@@ -61,7 +65,7 @@ const Item = styled.div<StyleItemProps>`
   position: relative;
   box-sizing: border-box;
   height: ${props => props.height};
-  width: ${props => `calc(${props.aspectRatio} * ${props.height})`};
+  width: ${props => props.width};
   margin: ${props => props.padding};
 
   > div:first-child {
@@ -91,34 +95,57 @@ const defaultRender = ({props: {src, title, alt}}: RendererProps) => {
   );
 };
 
+const defaultTitleRender = ({props: {title}}: RendererTitleProps) => {
+  return <AlbumTitle>{title}</AlbumTitle>;
+};
+
 const Story: React.FunctionComponent<ComponentProps> = ({
   albums,
   rowHeight = '300px',
   gridGutter,
   align = 'center',
   imageRenderer = defaultRender,
+  albumTitleRenderer = defaultTitleRender,
 }) => {
   const gutter = gridGutter / 2;
+
   return (
-    <Images align={align}>
-      {albums.map(({photos, title}, albumInd) =>
-        photos.map((el, index) => {
+    <Images align={align !== 'right' ? align : 'flex-end'}>
+      {albums.map((album, albumInd) =>
+        album.photos.map((el, index) => {
           const ratio = 100 / el.aspectRatio;
           const isFirstPhoto = index === 0;
+          const isLastPhoto = index === album.photos.length - 1;
+          const isLastAlbum = albumInd === albums.length - 1;
           const isFirstAlbum = albumInd === 0;
+
+          const paddingTop = gutter;
+          const paddingBottom = gridGutter * 2.25;
+          const paddingRight =
+            align !== 'right'
+              ? isLastPhoto && !isLastAlbum
+                ? gridGutter * 3.25
+                : gutter
+              : gutter;
+          const paddingLeft =
+            align !== 'right'
+              ? gutter
+              : isFirstPhoto && !isFirstAlbum
+              ? gridGutter * 3.25
+              : gutter;
+
           return (
             <>
               <Item
                 key={`${index}_${gutter}`}
                 height={rowHeight}
-                padding={`${gutter}% ${gutter}% ${gridGutter * 2.25}% ${
-                  isFirstPhoto && !isFirstAlbum ? gridGutter * 3.25 : gutter
-                }%`}
+                width={`calc(${el.aspectRatio} * ${rowHeight})`}
+                padding={`${paddingTop}% ${paddingRight}% ${paddingBottom}% ${paddingLeft}%`}
                 aspectRatio={el.aspectRatio}
                 ratio={ratio}
               >
                 <div>{imageRenderer({props: el, key: index})}</div>
-                {isFirstPhoto && <AlbumTitle>{title}</AlbumTitle>}
+                {isFirstPhoto && albumTitleRenderer({props: album})}
               </Item>
             </>
           );
