@@ -22,6 +22,7 @@ interface ComponentProps {
   imageRenderer?: FunctionName;
   albumTitleRenderer?: FunctionName;
   align?: 'center' | 'left' | 'right';
+  rowSpacing?: string;
 }
 
 interface StyleItemProps {
@@ -65,7 +66,7 @@ const Item = styled.div<StyleItemProps>`
   position: relative;
   box-sizing: border-box;
   height: ${props => props.height};
-  width: ${props => props.width};
+  width: calc(${props => props.width});
   margin: ${props => props.padding};
 
   > div:first-child {
@@ -104,6 +105,7 @@ const Story: React.FunctionComponent<ComponentProps> = ({
   rowHeight = '300px',
   gridGutter,
   align = 'center',
+  rowSpacing,
   imageRenderer = defaultRender,
   albumTitleRenderer = defaultTitleRender,
 }) => {
@@ -120,7 +122,7 @@ const Story: React.FunctionComponent<ComponentProps> = ({
           const isFirstAlbum = albumInd === 0;
 
           const paddingTop = gutter;
-          const paddingBottom = gridGutter * 2.25;
+          const paddingBottom = rowSpacing || `${gridGutter * 2.25}%`;
           const paddingRight =
             align !== 'right'
               ? isLastPhoto && !isLastAlbum
@@ -139,8 +141,8 @@ const Story: React.FunctionComponent<ComponentProps> = ({
               <Item
                 key={`${index}_${gutter}`}
                 height={rowHeight}
-                width={`calc(${el.aspectRatio} * ${rowHeight})`}
-                padding={`${paddingTop}% ${paddingRight}% ${paddingBottom}% ${paddingLeft}%`}
+                width={`${el.aspectRatio} * ${rowHeight}`}
+                padding={`${paddingTop}% ${paddingRight}% ${paddingBottom} ${paddingLeft}%`}
                 aspectRatio={el.aspectRatio}
                 ratio={ratio}
               >

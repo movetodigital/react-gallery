@@ -17,12 +17,14 @@ storiesOf('React Story', module)
       };
       const align = select('Align', aligns, 'center');
       const rowHeight = text('Row height', '300px');
+      const rowSpacing = text('Row spacing', '30px');
 
       return (
         <StoryExample
           gridGutter={gridGutter}
           align={align as 'center' | 'left' | 'right'}
           rowHeight={rowHeight}
+          rowSpacing={rowSpacing}
         />
       );
     },

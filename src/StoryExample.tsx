@@ -7,6 +7,7 @@ interface Props {
   gridGutter: number;
   rowHeight?: string;
   align?: 'center' | 'left' | 'right';
+  rowSpacing?: string;
 }
 
 const getRandomInt = (max: number) => {
@@ -36,6 +37,7 @@ export const StoryExample: React.FunctionComponent<Props> = ({
   rowHeight = '300px',
   gridGutter,
   align = 'center',
+  rowSpacing,
 }) => (
   <div style={{width: '1200px', margin}}>
     <Story
@@ -43,6 +45,7 @@ export const StoryExample: React.FunctionComponent<Props> = ({
       albums={albums}
       align={align}
       rowHeight={rowHeight}
+      rowSpacing={rowSpacing}
     />
   </div>
 );
