@@ -3,3 +3,4 @@
 export * from './src/Mosaic';
 export * from './src/Masonry';
 export * from './src/Justified';
+export * from './src/Story';
