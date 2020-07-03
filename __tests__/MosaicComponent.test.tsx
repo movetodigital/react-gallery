@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
 
-import {Mosaic} from '../src/Mosaic';
+import {Mosaic} from '../src/mosaic/Mosaic';
 
 const hydratedProps = {
   images: [
@@ -32,6 +32,7 @@ const hydratedProps = {
 
 describe('<Mosaic />', () => {
   it('should render and match snapshot', () => {
+    // @ts-ignore
     const tree = shallow(<Mosaic {...hydratedProps} />);
 
     expect(tree).toMatchSnapshot();

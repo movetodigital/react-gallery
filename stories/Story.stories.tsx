@@ -1,8 +1,8 @@
-import {number, select, text, withKnobs} from '@storybook/addon-knobs';
+import {boolean, number, select, text, withKnobs} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 
-import {StoryExample} from '../src/StoryExample';
+import {StoryExample} from '../src/story/StoryExample';
 
 storiesOf('React Story', module)
   .addDecorator(withKnobs)
@@ -16,8 +16,9 @@ storiesOf('React Story', module)
         Right: 'right',
       };
       const align = select('Align', aligns, 'center');
-      const rowHeight = text('Row height', '300px');
+      const rowHeight = number('Row height in px', 300);
       const rowSpacing = text('Row spacing', '30px');
+      const enableDetailView = boolean('Enable detail view', false);
 
       return (
         <StoryExample
@@ -25,6 +26,7 @@ storiesOf('React Story', module)
           align={align as 'center' | 'left' | 'right'}
           rowHeight={rowHeight}
           rowSpacing={rowSpacing}
+          enableDetailView={enableDetailView}
         />
       );
     },

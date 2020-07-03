@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
 
-import {Masonry} from '../src/Masonry';
+import {Masonry} from '../src/masonry/Masonry';
 
 const hydratedProps = {
   images: [

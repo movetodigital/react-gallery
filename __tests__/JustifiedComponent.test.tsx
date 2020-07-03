@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
 
-import {Justified} from '../src/Justified';
+import {Justified} from '../src/justified/Justified';
 
 const hydratedProps = {
   images: [
