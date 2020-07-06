@@ -1,4 +1,4 @@
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import * as React from 'react';
 
 import {Justified} from '../src/justified/Justified';
@@ -32,7 +32,7 @@ const hydratedProps = {
 
 describe('<Justified />', () => {
   it('should render and match snapshot', () => {
-    const tree = shallow(<Justified {...hydratedProps} />);
+    const tree = mount(<Justified {...hydratedProps} />);
 
     expect(tree).toMatchSnapshot();
   });

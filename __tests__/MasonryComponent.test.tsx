@@ -1,4 +1,4 @@
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import * as React from 'react';
 
 import {Masonry} from '../src/masonry/Masonry';
@@ -32,7 +32,7 @@ const hydratedProps = {
 
 describe('<Masonry />', () => {
   it('should render and match snapshot', () => {
-    const tree = shallow(<Masonry {...hydratedProps} />);
+    const tree = mount(<Masonry {...hydratedProps} />);
 
     expect(tree).toMatchSnapshot();
   });
