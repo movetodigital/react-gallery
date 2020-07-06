@@ -2,19 +2,19 @@ import {boolean, number, withKnobs} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
 
-import {MosaicExample} from '../src/mosaic/MosaicExample';
+import {FrescoExample} from '../src/fresco/FrescoExample';
 
-storiesOf('React Mosaic', module)
+storiesOf('React Fresco', module)
   .addDecorator(withKnobs)
   .add(
     'Default with addons',
     () => {
       return (
-        <MosaicExample
-          gridColumns={number('Max columns count', 5)}
-          aspectRatio={number('Aspect ratio', 1.7)}
-          gridGutter={number('Gutter in %', 1)}
+        <FrescoExample
+          columnsMaxCount={number('Max columns count', 3)}
+          gutterInPercent={number('Gutter in %', 1)}
           enableDetailView={boolean('Enable detail view', false)}
+          aspectRatio={number('Aspect ratio', 3)}
         />
       );
     },

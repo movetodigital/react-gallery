@@ -5,9 +5,10 @@ import {Story} from './Story';
 interface Props {
   margin?: number;
   gridGutter: number;
-  rowHeight?: string;
+  rowHeight?: number;
   align?: 'center' | 'left' | 'right';
   rowSpacing?: string;
+  enableDetailView?: boolean;
 }
 
 const getRandomInt = (max: number) => {
@@ -34,10 +35,11 @@ const albums = Array.from('x'.repeat(20)).map(() => ({
 
 export const StoryExample: React.FunctionComponent<Props> = ({
   margin,
-  rowHeight = '300px',
+  rowHeight = 300,
   gridGutter,
   align = 'center',
   rowSpacing,
+  enableDetailView,
 }) => (
   <div style={{width: '1200px', margin}}>
     <Story
@@ -46,6 +48,7 @@ export const StoryExample: React.FunctionComponent<Props> = ({
       align={align}
       rowHeight={rowHeight}
       rowSpacing={rowSpacing}
+      enableDetailView={enableDetailView}
     />
   </div>
 );

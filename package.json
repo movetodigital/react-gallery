@@ -1,6 +1,6 @@
 {
   "name": "@movetodigital/react-gallery",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "React gallery",
   "main": "build/release/index.js",
   "types": "build/release/index.d.ts",
@@ -64,9 +64,9 @@
     "@types/storybook__addon-links": "3.3.5",
     "@types/storybook__addon-viewport": "4.1.1",
     "@types/storybook__react": "4.0.2",
+    "@types/styled-components": "^4.4.0",
     "@typescript-eslint/eslint-plugin": "1.13.0",
     "@typescript-eslint/parser": "1.13.0",
-    "@types/styled-components": "^4.4.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "classnames": "2.2.6",
@@ -83,7 +83,6 @@
     "eslint-plugin-react-hooks": "2.3.0",
     "eslint-plugin-simple-import-sort": "5.0.0",
     "husky": "3.1.0",
-    "intersection-observer": "^0.7.0",
     "jest": "^24.8.0",
     "jsdom": "15.2.1",
     "jsdom-global": "3.0.2",
@@ -104,5 +103,7 @@
     "classnames": ">=2",
     "react": ">=16"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/lodash": "^4.14.157"
+  }
 }
