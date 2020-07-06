@@ -33,15 +33,10 @@ interface ComponentProps {
   className?: string;
   columnClassName?: string;
   rowClassName?: string;
-  disableObserver?: boolean;
-  disableActualImage?: boolean;
   fixedBottom?: number;
   enableDetailView?: boolean;
   detailsViewRenderer?: FunctionName;
-  disableLastRowDetecting?: boolean;
   placeholderColor?: string;
-  viewportWidth?: number;
-  viewportHeight?: number;
   fixedBottomGutterInPercent?: number;
   fixedImagePlaceholderColor?: string;
 }
@@ -56,14 +51,9 @@ const Justified = ({
   className = '',
   columnClassName = '',
   rowClassName = '',
-  disableObserver = false,
-  disableActualImage = false,
   enableDetailView = false,
   detailsViewRenderer = defaultDetailsViewRenderer,
-  disableLastRowDetecting = false,
   placeholderColor = PLACEHOLDER_COLOR,
-  viewportWidth = VIEWPORT_WIDTH,
-  viewportHeight = VIEWPORT_HEIGHT,
 }: ComponentProps) => {
   const engine = useRef<any>();
   const container: React.MutableRefObject<
@@ -125,10 +115,7 @@ const Justified = ({
       .setColumnMaxWidth(columnMaxWidth)
       .setColumnMaxHeight(columnMaxHeight)
       .setGutterInPercent(gutterInPercent)
-      .setViewportWidth(viewportWidth)
       .setScrollTop(scrollTop)
-      .setViewportHeight(viewportHeight)
-      .setDisableLastRowDetecting(disableLastRowDetecting)
       .setParentWidth((container.current || {}).offsetWidth);
 
     setRows(engine.current.buildFastRows());
@@ -143,10 +130,7 @@ const Justified = ({
       .setColumnMaxWidth(columnMaxWidth)
       .setColumnMaxHeight(columnMaxHeight)
       .setGutterInPercent(gutterInPercent)
-      .setViewportWidth(viewportWidth)
       .setScrollTop(scrollTop)
-      .setViewportHeight(viewportHeight)
-      .setDisableLastRowDetecting(disableLastRowDetecting)
       .setParentWidth(containerWidth);
     setRows(engine.current.buildFastRows());
   }, [
@@ -155,11 +139,8 @@ const Justified = ({
     columnMaxWidth,
     columnMaxHeight,
     gutterInPercent,
-    viewportWidth,
     scrollTop,
     containerWidth,
-    viewportHeight,
-    disableLastRowDetecting,
   ]);
 
   const handleSelectImage = ({
@@ -195,7 +176,6 @@ const Justified = ({
       // @ts-ignore
       ref={container}
       className={className}
-      viewportHeight={viewportHeight}
       onWheel={onWheel}
     >
       {rows.map((el: any, rowIndex: number) => {
@@ -247,10 +227,7 @@ const Justified = ({
                           : `0 ${engine.current.getGutterInPercent()}% ${engine.current.getGutterInPercent()}% 0`,
                     }}
                   >
-                    <ViewMonitor
-                      disableObserver={disableObserver}
-                      disableActualImage={disableActualImage}
-                    >
+                    <ViewMonitor>
                       {(isViewable: any) =>
                         imageRenderer({
                           ...column,
@@ -259,7 +236,7 @@ const Justified = ({
                           newWidthInPercent,
                           placeholderHeight,
                           placeholderColor,
-                          visible: !disableActualImage && isViewable,
+                          visible: isViewable,
                           enableMasonry: false,
                           onClick: () =>
                             handleSelectImage({

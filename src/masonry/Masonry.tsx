@@ -28,8 +28,6 @@ interface ComponentProps {
   gutterInPercent?: number;
   className?: string;
   columnClassName?: string;
-  disableObserver?: boolean;
-  disableActualImage?: boolean;
   enableDetailView?: boolean;
   detailsViewRenderer?: FunctionName;
   placeholderColor?: string;
@@ -43,8 +41,6 @@ const Masonry = ({
   gutterInPercent = GUTTER_IN_PERCENT,
   className = '',
   columnClassName = '',
-  disableObserver = false,
-  disableActualImage = false,
   enableDetailView = false,
   detailsViewRenderer = defaultDetailsViewRenderer,
   placeholderColor = PLACEHOLDER_COLOR,
@@ -133,15 +129,12 @@ const Masonry = ({
                         engine.current.getMaxColumnsCount()}% 0`,
                     }}
                   >
-                    <ViewMonitor
-                      disableObserver={disableObserver as boolean}
-                      disableActualImage={disableActualImage as boolean}
-                    >
+                    <ViewMonitor>
                       {(isViewable: boolean) =>
                         imageRenderer({
                           ...image,
                           placeholderHeight,
-                          visible: !disableActualImage && isViewable,
+                          visible: isViewable,
                           enableMasonry: true,
                           placeholderColor,
                           onClick: () =>

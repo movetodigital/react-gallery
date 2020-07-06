@@ -13,12 +13,7 @@ storiesOf('React Justified', module)
         <JustifiedExample
           columnsMaxCount={number('Max columns count', 5)}
           gutterInPercent={number('Gutter in %', 0.5)}
-          disableObserver={boolean('Disable Intersection Observer', false)}
-          disableActualImage={boolean('Disable actual images', false)}
           enableDetailView={boolean('Enable detail view', false)}
-          disableLastRowDetecting={boolean('Disable LastRow Detecting', false)}
-          viewportWidth={number('Viewport width in px', 0)}
-          viewportHeight={number('Viewport height in px', 400)}
         />
       );
     },

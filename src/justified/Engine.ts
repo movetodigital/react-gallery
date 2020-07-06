@@ -49,11 +49,8 @@ class Engine {
   private maxColumnsCount: number;
   private columnMaxWidth: number;
   private columnMaxHeight: number;
-  private viewportWidth: number;
   private scrollTop: number;
   private parentWidth: number;
-  private viewportHeight: number;
-  private disableLastRowDetecting: boolean;
 
   public setImages(images: Array<any>) {
     if (!images) {
@@ -107,20 +104,6 @@ class Engine {
     return this;
   }
 
-  public setViewportWidth(viewportWidth: number) {
-    this.viewportWidth = viewportWidth;
-    return this;
-  }
-
-  public setViewportHeight(viewportHeight: number) {
-    this.viewportHeight = viewportHeight;
-    return this;
-  }
-
-  public getViewportHeight() {
-    return this.viewportHeight;
-  }
-
   public setScrollTop(scrollTop: number) {
     this.scrollTop = scrollTop;
     return this;
@@ -139,19 +122,7 @@ class Engine {
     return this.parentWidth;
   }
 
-  public setDisableLastRowDetecting(disableLastRowDetecting: number) {
-    this.parentWidth = disableLastRowDetecting;
-    return this;
-  }
-
-  public getDisableLastRowDetecting() {
-    return this.disableLastRowDetecting;
-  }
-
   public getGutterInPx() {
-    if (this.viewportWidth) {
-      return (this.gutterInPercent * this.viewportWidth) / 100;
-    }
     if (this.parentWidth) {
       return (this.gutterInPercent * this.parentWidth) / 100;
     }
@@ -190,18 +161,13 @@ class Engine {
   public buildRow(items: Array<any>) {
     const row = [];
     let columnsCount = 0;
-    let totalRowWidth = 0;
     const isIncompleteRow = () => {
-      if (!this.viewportWidth) {
-        return columnsCount < this.maxColumnsCount;
-      }
-      return totalRowWidth < this.viewportWidth;
+      return columnsCount < this.maxColumnsCount;
     };
     while (items.length > 0 && isIncompleteRow()) {
       const column = items.shift();
       row.push(column);
       columnsCount++;
-      totalRowWidth += column.width;
     }
     return {
       row,
@@ -229,7 +195,7 @@ class Engine {
         ratio *
         (100 - (row.length - 1) * this.gutterInPercent)) /
       100;
-    if (isLastRow && !this.disableLastRowDetecting) {
+    if (isLastRow) {
       return newHeight > this.columnMaxHeight
         ? this.columnMaxHeight
         : newHeight;
@@ -257,7 +223,7 @@ class Engine {
     let newWidthInPercent =
       (100 * newWidth) /
       (this.getMaxColumnsCount() * this.getColumnsMaxWidth());
-    if (isIncomplete && this.disableLastRowDetecting) {
+    if (isIncomplete) {
       newWidthInPercent =
         (((100 * newWidth) /
           (this.getMaxColumnsCount() *
@@ -280,9 +246,7 @@ class Engine {
       isIncomplete,
       row
     );
-    const newWidth = this.viewportWidth
-      ? (widthInPercent * this.viewportWidth) / 100
-      : (widthInPercent * this.parentWidth) / 100;
+    const newWidth = (widthInPercent * this.parentWidth) / 100;
 
     const aspectRatio = originalWidth / originalHeight;
     return newWidth / aspectRatio;
@@ -291,21 +255,9 @@ class Engine {
   public buildFastRows() {
     const rows = [];
     const items = this.getNormalizedItems(this.images);
-    let totalHeight = 0;
     while (items.length > 0) {
       const row = this.buildRow(items);
-      if (this.viewportHeight) {
-        if (totalHeight < this.viewportHeight + this.scrollTop) {
-          rows.push(row);
-          const newHeight = this.getNewRowHeight(row);
-          totalHeight += newHeight;
-          totalHeight += this.getGutterInPx();
-        } else {
-          items.length = 0;
-        }
-      } else {
-        rows.push(row);
-      }
+      rows.push(row);
     }
     return rows;
   }

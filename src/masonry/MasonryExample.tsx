@@ -3,10 +3,7 @@ import React from 'react';
 interface Props {
   columnsMaxCount: number;
   gutterInPercent: number;
-  disableObserver: boolean;
   enableDetailView: boolean;
-  disableActualImage: boolean;
-  //viewportWidth: number;
 }
 
 import {Masonry} from './Masonry';
@@ -31,19 +28,13 @@ const images = Array.from('x'.repeat(40)).map(() => {
 export const MasonryExample: React.FunctionComponent<Props> = ({
   columnsMaxCount,
   gutterInPercent,
-  disableObserver,
-  disableActualImage,
   enableDetailView,
-  //viewportWidth,
 }) => (
   <div style={{width: '1200px'}}>
     <Masonry
       images={images}
       columnsMaxCount={columnsMaxCount}
       gutterInPercent={gutterInPercent}
-      disableObserver={disableObserver}
-      disableActualImage={disableActualImage}
-      //viewportWidth={viewportWidth}
       enableDetailView={enableDetailView}
     />
   </div>

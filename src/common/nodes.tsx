@@ -17,7 +17,6 @@ interface Props {
   children: React.ReactNode;
   className?: string;
   withLoader?: boolean;
-  viewportHeight?: number;
 }
 
 export const Div = React.forwardRef<Ref, Props>(
@@ -52,9 +51,8 @@ export const Container = styled(Div)`
   display: block;
   font-size: 0;
   opacity: ${props => (props.withLoader ? '0.5' : false)};
-  height: ${props =>
-    props.viewportHeight ? `${props.viewportHeight}px` : 'initial'};
-  overflow: ${props => (props.viewportHeight ? `auto` : 'initial')};
+  height: initial;
+  overflow: initial;
 `;
 
 export const DetailsContainer = styled.div<StyleDetailsProps>`

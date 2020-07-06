@@ -83,7 +83,6 @@
     "eslint-plugin-react-hooks": "2.3.0",
     "eslint-plugin-simple-import-sort": "5.0.0",
     "husky": "3.1.0",
-    "intersection-observer": "^0.7.0",
     "jest": "^24.8.0",
     "jsdom": "15.2.1",
     "jsdom-global": "3.0.2",
@@ -105,7 +104,6 @@
     "react": ">=16"
   },
   "dependencies": {
-    "@researchgate/react-intersection-observer": "^1.2.0",
     "@types/lodash": "^4.14.157"
   }
 }

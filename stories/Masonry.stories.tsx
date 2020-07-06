@@ -13,8 +13,6 @@ storiesOf('React Masonry', module)
         <MasonryExample
           columnsMaxCount={number('Max columns count', 5)}
           gutterInPercent={number('Gutter in %', 0.5)}
-          disableObserver={boolean('Disable Intersection Observer', false)}
-          disableActualImage={boolean('Disable actual images', false)}
           enableDetailView={boolean('Enable detail view', false)}
         />
       );
