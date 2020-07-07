@@ -1,0 +1,521 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Masonry /> should render and match snapshot 1`] = `
+<Masonry
+  gridColumns={5}
+  gridGutter={1}
+  images={
+    Array [
+      Object {
+        "height": 500,
+        "src": "/image/name/1",
+        "width": 500,
+      },
+      Object {
+        "height": 500,
+        "src": "/image/name/1",
+        "width": 500,
+      },
+      Object {
+        "height": 500,
+        "src": "/image/name/1",
+        "width": 500,
+      },
+      Object {
+        "height": 500,
+        "src": "/image/name/1",
+        "width": 500,
+      },
+    ]
+  }
+>
+  <Styled(Component)
+    className=""
+  >
+    <StyledComponent
+      className=""
+      forwardedComponent={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-htpNat",
+            "isStatic": false,
+            "lastClassName": "cihfGY",
+            "rules": Array [
+              "
+  position: relative;
+  display: block;
+  font-size: 0;
+  opacity: ",
+              [Function],
+              ";
+  height: initial;
+  overflow: initial;
+",
+            ],
+          },
+          "displayName": "Styled(Component)",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-htpNat",
+          "target": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
+    >
+      <ForwardRef
+        className="sc-htpNat cihfGY"
+      >
+        <div
+          className="sc-htpNat cihfGY"
+        >
+          <div
+            className=""
+            key="column-0"
+            style={
+              Object {
+                "display": "inline-block",
+                "margin": "0 0.5% 0 0",
+                "position": "relative",
+                "verticalAlign": "top",
+                "width": "19.6%",
+              }
+            }
+          >
+            <div
+              key="image-/image/name/1-0-0"
+              style={
+                Object {
+                  "margin": "0 0 2.5% 0",
+                }
+              }
+            >
+              <ViewMonitor>
+                <div>
+                  <Image
+                    alt=""
+                    enableMasonry={true}
+                    height={200}
+                    onClick={[Function]}
+                    order={1}
+                    placeholderColor="#f0f0f0"
+                    placeholderHeight={100}
+                    src="/image/name/1"
+                    visible={true}
+                    width={200}
+                  >
+                    <Styled(Component)
+                      alt=""
+                      onClick={[Function]}
+                      src="/image/name/1"
+                      visible={true}
+                    >
+                      <StyledComponent
+                        alt=""
+                        forwardedComponent={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": Array [],
+                            "componentStyle": ComponentStyle {
+                              "componentId": "sc-bwzfXH",
+                              "isStatic": false,
+                              "lastClassName": "eYmfNB",
+                              "rules": Array [
+                                "
+  position: absolute;
+  display: ",
+                                [Function],
+                                ";
+  width: 100%;
+  cursor: pointer;
+",
+                              ],
+                            },
+                            "displayName": "Styled(Component)",
+                            "foldedComponentIds": Array [],
+                            "render": [Function],
+                            "styledComponentId": "sc-bwzfXH",
+                            "target": [Function],
+                            "toString": [Function],
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                        onClick={[Function]}
+                        src="/image/name/1"
+                        visible={true}
+                      >
+                        <Component
+                          alt=""
+                          className="sc-bwzfXH eYmfNB"
+                          onClick={[Function]}
+                          src="/image/name/1"
+                          visible={true}
+                        >
+                          <img
+                            alt=""
+                            className="sc-bwzfXH eYmfNB"
+                            onClick={[Function]}
+                            src="/image/name/1"
+                          />
+                        </Component>
+                      </StyledComponent>
+                    </Styled(Component)>
+                  </Image>
+                  <div
+                    style={
+                      Object {
+                        "backgroundColor": "#f0f0f0",
+                        "paddingTop": "100%",
+                      }
+                    }
+                  />
+                </div>
+              </ViewMonitor>
+            </div>
+          </div>
+          <div
+            className=""
+            key="column-1"
+            style={
+              Object {
+                "display": "inline-block",
+                "margin": "0 0.5% 0 0",
+                "position": "relative",
+                "verticalAlign": "top",
+                "width": "19.6%",
+              }
+            }
+          >
+            <div
+              key="image-/image/name/1-1-0"
+              style={
+                Object {
+                  "margin": "0 0 2.5% 0",
+                }
+              }
+            >
+              <ViewMonitor>
+                <div>
+                  <Image
+                    alt=""
+                    enableMasonry={true}
+                    height={200}
+                    onClick={[Function]}
+                    order={2}
+                    placeholderColor="#f0f0f0"
+                    placeholderHeight={100}
+                    src="/image/name/1"
+                    visible={true}
+                    width={200}
+                  >
+                    <Styled(Component)
+                      alt=""
+                      onClick={[Function]}
+                      src="/image/name/1"
+                      visible={true}
+                    >
+                      <StyledComponent
+                        alt=""
+                        forwardedComponent={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": Array [],
+                            "componentStyle": ComponentStyle {
+                              "componentId": "sc-bwzfXH",
+                              "isStatic": false,
+                              "lastClassName": "eYmfNB",
+                              "rules": Array [
+                                "
+  position: absolute;
+  display: ",
+                                [Function],
+                                ";
+  width: 100%;
+  cursor: pointer;
+",
+                              ],
+                            },
+                            "displayName": "Styled(Component)",
+                            "foldedComponentIds": Array [],
+                            "render": [Function],
+                            "styledComponentId": "sc-bwzfXH",
+                            "target": [Function],
+                            "toString": [Function],
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                        onClick={[Function]}
+                        src="/image/name/1"
+                        visible={true}
+                      >
+                        <Component
+                          alt=""
+                          className="sc-bwzfXH eYmfNB"
+                          onClick={[Function]}
+                          src="/image/name/1"
+                          visible={true}
+                        >
+                          <img
+                            alt=""
+                            className="sc-bwzfXH eYmfNB"
+                            onClick={[Function]}
+                            src="/image/name/1"
+                          />
+                        </Component>
+                      </StyledComponent>
+                    </Styled(Component)>
+                  </Image>
+                  <div
+                    style={
+                      Object {
+                        "backgroundColor": "#f0f0f0",
+                        "paddingTop": "100%",
+                      }
+                    }
+                  />
+                </div>
+              </ViewMonitor>
+            </div>
+          </div>
+          <div
+            className=""
+            key="column-2"
+            style={
+              Object {
+                "display": "inline-block",
+                "margin": "0 0.5% 0 0",
+                "position": "relative",
+                "verticalAlign": "top",
+                "width": "19.6%",
+              }
+            }
+          >
+            <div
+              key="image-/image/name/1-2-0"
+              style={
+                Object {
+                  "margin": "0 0 2.5% 0",
+                }
+              }
+            >
+              <ViewMonitor>
+                <div>
+                  <Image
+                    alt=""
+                    enableMasonry={true}
+                    height={200}
+                    onClick={[Function]}
+                    order={3}
+                    placeholderColor="#f0f0f0"
+                    placeholderHeight={100}
+                    src="/image/name/1"
+                    visible={true}
+                    width={200}
+                  >
+                    <Styled(Component)
+                      alt=""
+                      onClick={[Function]}
+                      src="/image/name/1"
+                      visible={true}
+                    >
+                      <StyledComponent
+                        alt=""
+                        forwardedComponent={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": Array [],
+                            "componentStyle": ComponentStyle {
+                              "componentId": "sc-bwzfXH",
+                              "isStatic": false,
+                              "lastClassName": "eYmfNB",
+                              "rules": Array [
+                                "
+  position: absolute;
+  display: ",
+                                [Function],
+                                ";
+  width: 100%;
+  cursor: pointer;
+",
+                              ],
+                            },
+                            "displayName": "Styled(Component)",
+                            "foldedComponentIds": Array [],
+                            "render": [Function],
+                            "styledComponentId": "sc-bwzfXH",
+                            "target": [Function],
+                            "toString": [Function],
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                        onClick={[Function]}
+                        src="/image/name/1"
+                        visible={true}
+                      >
+                        <Component
+                          alt=""
+                          className="sc-bwzfXH eYmfNB"
+                          onClick={[Function]}
+                          src="/image/name/1"
+                          visible={true}
+                        >
+                          <img
+                            alt=""
+                            className="sc-bwzfXH eYmfNB"
+                            onClick={[Function]}
+                            src="/image/name/1"
+                          />
+                        </Component>
+                      </StyledComponent>
+                    </Styled(Component)>
+                  </Image>
+                  <div
+                    style={
+                      Object {
+                        "backgroundColor": "#f0f0f0",
+                        "paddingTop": "100%",
+                      }
+                    }
+                  />
+                </div>
+              </ViewMonitor>
+            </div>
+          </div>
+          <div
+            className=""
+            key="column-3"
+            style={
+              Object {
+                "display": "inline-block",
+                "margin": "0 0.5% 0 0",
+                "position": "relative",
+                "verticalAlign": "top",
+                "width": "19.6%",
+              }
+            }
+          >
+            <div
+              key="image-/image/name/1-3-0"
+              style={
+                Object {
+                  "margin": "0 0 2.5% 0",
+                }
+              }
+            >
+              <ViewMonitor>
+                <div>
+                  <Image
+                    alt=""
+                    enableMasonry={true}
+                    height={200}
+                    onClick={[Function]}
+                    order={4}
+                    placeholderColor="#f0f0f0"
+                    placeholderHeight={100}
+                    src="/image/name/1"
+                    visible={true}
+                    width={200}
+                  >
+                    <Styled(Component)
+                      alt=""
+                      onClick={[Function]}
+                      src="/image/name/1"
+                      visible={true}
+                    >
+                      <StyledComponent
+                        alt=""
+                        forwardedComponent={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": Array [],
+                            "componentStyle": ComponentStyle {
+                              "componentId": "sc-bwzfXH",
+                              "isStatic": false,
+                              "lastClassName": "eYmfNB",
+                              "rules": Array [
+                                "
+  position: absolute;
+  display: ",
+                                [Function],
+                                ";
+  width: 100%;
+  cursor: pointer;
+",
+                              ],
+                            },
+                            "displayName": "Styled(Component)",
+                            "foldedComponentIds": Array [],
+                            "render": [Function],
+                            "styledComponentId": "sc-bwzfXH",
+                            "target": [Function],
+                            "toString": [Function],
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                        onClick={[Function]}
+                        src="/image/name/1"
+                        visible={true}
+                      >
+                        <Component
+                          alt=""
+                          className="sc-bwzfXH eYmfNB"
+                          onClick={[Function]}
+                          src="/image/name/1"
+                          visible={true}
+                        >
+                          <img
+                            alt=""
+                            className="sc-bwzfXH eYmfNB"
+                            onClick={[Function]}
+                            src="/image/name/1"
+                          />
+                        </Component>
+                      </StyledComponent>
+                    </Styled(Component)>
+                  </Image>
+                  <div
+                    style={
+                      Object {
+                        "backgroundColor": "#f0f0f0",
+                        "paddingTop": "100%",
+                      }
+                    }
+                  />
+                </div>
+              </ViewMonitor>
+            </div>
+          </div>
+          <div
+            className=""
+            key="column-4"
+            style={
+              Object {
+                "display": "inline-block",
+                "margin": "0 0% 0 0",
+                "position": "relative",
+                "verticalAlign": "top",
+                "width": "19.6%",
+              }
+            }
+          />
+        </div>
+      </ForwardRef>
+    </StyledComponent>
+  </Styled(Component)>
+</Masonry>
+`;
