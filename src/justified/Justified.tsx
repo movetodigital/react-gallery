@@ -197,9 +197,7 @@ const Justified = ({
                   el.isIncomplete
                 );
                 const newWidthInPercent = engine.current.getNewWidthInPercent(
-                  newWidth,
-                  el.isIncomplete,
-                  row
+                  newWidth
                 );
                 const placeholderHeight = (100 * newHeight) / newWidth;
 
