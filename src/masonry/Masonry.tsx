@@ -95,6 +95,9 @@ const Masonry = ({
     }
   };
 
+  const getColumnWidth = (gutter, count) =>
+    (100 - gutter * (count - 1)) / count;
+
   return (
     <Container className={className}>
       {columns.map((item, columnIndex) => (
@@ -107,9 +110,15 @@ const Masonry = ({
               verticalAlign: 'top',
               position: 'relative',
               display: 'inline-block',
-              width: `${100 / engine.current.getMaxColumnsCount() -
-                engine.current.getGutterInPercent()}%`,
-              margin: `0 ${engine.current.getGutterInPercent()}% 0 0`,
+              width: `${getColumnWidth(
+                engine.current.getGutterInPercent(),
+                engine.current.getMaxColumnsCount()
+              )}%`,
+              margin: `0 ${
+                columnIndex === columns.length - 1
+                  ? 0
+                  : engine.current.getGutterInPercent()
+              }% 0 0`,
             }}
           >
             {item.images.map(

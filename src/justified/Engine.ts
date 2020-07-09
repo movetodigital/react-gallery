@@ -215,25 +215,8 @@ class Engine {
     return itemAfterResize.width;
   }
 
-  public getNewWidthInPercent = (
-    newWidth: number,
-    isIncomplete: boolean,
-    row: any[]
-  ) => {
-    let newWidthInPercent =
-      (100 * newWidth) /
-      (this.getMaxColumnsCount() * this.getColumnsMaxWidth());
-    if (isIncomplete) {
-      newWidthInPercent =
-        (((100 * newWidth) /
-          (this.getMaxColumnsCount() *
-            // eslint-disable-next-line max-len
-            this.getColumnsMaxWidth())) *
-          row.length) /
-        this.getMaxColumnsCount();
-    }
-    return newWidthInPercent;
-  };
+  public getNewWidthInPercent = (newWidth: number) =>
+    (100 * newWidth) / (this.getMaxColumnsCount() * this.getColumnsMaxWidth());
 
   public getNewRowHeight = (row: any) => {
     const item = row.row[0] || {};
@@ -242,9 +225,7 @@ class Engine {
     const originalWidth = row.row[0].originalWidth;
 
     const widthInPercent = this.getNewWidthInPercent(
-      this.calculateWidth(item, row.row, isIncomplete),
-      isIncomplete,
-      row
+      this.calculateWidth(item, row.row, isIncomplete)
     );
     const newWidth = (widthInPercent * this.parentWidth) / 100;
 
