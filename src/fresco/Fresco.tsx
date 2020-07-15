@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// @ts-nocheck
 import chunk from 'lodash/chunk';
 import get from 'lodash/get';
 import React, {useEffect, useRef, useState} from 'react';
@@ -131,7 +130,7 @@ const defaultDetailsViewRenderer = ({
 
 const Fresco: React.FunctionComponent<ComponentProps> = ({
   images = [],
-  gridType = 5,
+  gridType = 1,
   gutterInPercent = 1,
   aspectRatio = 1.7,
   columnsMaxCount = 3,
