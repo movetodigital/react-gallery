@@ -5,6 +5,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
 type FunctionName = (n: object) => any;
+type GridType = 1 | 2 | 3 | 4;
 
 interface ImageItemProps {
   src?: string;
@@ -28,6 +29,7 @@ interface StyleDetailItemProps {
 
 interface ComponentProps {
   images: Array<ImageItemProps>;
+  gridType?: GridType;
   gutterInPercent?: number;
   aspectRatio?: number;
   columnsMaxCount?: number;
@@ -128,6 +130,7 @@ const defaultDetailsViewRenderer = ({
 
 const Fresco: React.FunctionComponent<ComponentProps> = ({
   images = [],
+  gridType = 1,
   gutterInPercent = 1,
   aspectRatio = 1.7,
   columnsMaxCount = 3,
@@ -179,6 +182,7 @@ const Fresco: React.FunctionComponent<ComponentProps> = ({
   const rowHeight = containerWidth / aspectRatio;
   const gutterInPx = (containerWidth * gutter) / 100;
   const thinColumnWidth = 16 / clientColumnMaxCount;
+
   const handleSelectImage = ({
     imageRow,
     imageId,
@@ -227,6 +231,7 @@ const Fresco: React.FunctionComponent<ComponentProps> = ({
       )
     );
   };
+
   const getItem = ({
     height,
     item,
@@ -432,6 +437,323 @@ const Fresco: React.FunctionComponent<ComponentProps> = ({
     };
   };
 
+  const getRightDoubleRow = ({
+    items,
+    rowIndex,
+  }: {
+    items: Array<ImageItemProps>;
+    rowIndex: number;
+  }) => {
+    const height =
+      clientColumnMaxCount > 2
+        ? rowHeight * 0.8 - gutterInPx
+        : rowHeight - gutterInPx;
+    if (items.length) {
+      if (clientColumnMaxCount >= 2) {
+        const columnCount =
+          clientColumnMaxCount <= 3 ? 2 : clientColumnMaxCount - 1;
+        const itemsToRow = items.slice(0, columnCount);
+        const wideColumnWidth = 16 - thinColumnWidth * (columnCount - 1);
+        const itemsToThinRow =
+          itemsToRow.length === columnCount
+            ? itemsToRow.slice(0, itemsToRow.length - 1)
+            : itemsToRow;
+
+        const row = (
+          <React.Fragment key={`wide-right-row-${rowIndex}`}>
+            <Row padding={`${gutterInPx * 2}px 0`}>
+              {itemsToThinRow.map((item, index) => {
+                return (
+                  <Column
+                    width={thinColumnWidth}
+                    key={`wide-right-row-${rowIndex}-${index}`}
+                  >
+                    {getItem({
+                      height,
+                      rowIndex,
+                      item: item,
+                      padding: `0 ${gutterInPx}px 0 ${
+                        index === 0 ? 0 : gutterInPx
+                      }px`,
+                    })}
+                  </Column>
+                );
+              })}
+              {itemsToRow.length === columnCount && (
+                <Column width={wideColumnWidth}>
+                  {getItem({
+                    height,
+                    rowIndex,
+                    item: itemsToRow[itemsToRow.length - 1],
+                    padding: `0 0 0 ${gutterInPx}px`,
+                  })}
+                </Column>
+              )}
+            </Row>
+            {getDetailRow({rowIndex, height: rowHeight})}
+          </React.Fragment>
+        );
+        return {
+          row,
+          newItems: items.slice(columnCount),
+        };
+      } else {
+        const row = getWideSingleRow({item: items[0], rowIndex});
+        return {
+          row,
+          newItems: items.slice(1),
+        };
+      }
+    }
+    return {
+      row: null,
+      newItems: [],
+    };
+  };
+
+  const getRightDoubleRowTypeTwo = ({
+    items,
+    rowIndex,
+  }: {
+    items: Array<ImageItemProps>;
+    rowIndex: number;
+  }) => {
+    const height =
+      clientColumnMaxCount >= 2
+        ? rowHeight * 0.8 - gutterInPx
+        : rowHeight - gutterInPx;
+    if (items.length) {
+      if (clientColumnMaxCount >= 2) {
+        const columnCount =
+          clientColumnMaxCount <= 3 ? 2 : clientColumnMaxCount - 1;
+        const itemsToRow = items.slice(0, columnCount);
+        const wideColumnWidth =
+          16 - thinColumnWidth * (clientColumnMaxCount - 2);
+        const firstItemWidth = wideColumnWidth * 0.631;
+        const secondItemWidth =
+          thinColumnWidth + (wideColumnWidth - firstItemWidth);
+        const itemsToWideRow = itemsToRow.slice(0, 2);
+        const itemsToThinRow = itemsToRow.slice(2);
+
+        const row = (
+          <React.Fragment key={`triple-row-${rowIndex}`}>
+            <Row padding={`${gutterInPx * 2}px 0`}>
+              <Column width={firstItemWidth}>
+                {getItem({
+                  height,
+                  rowIndex,
+                  item: itemsToWideRow[0],
+                  padding: `0 ${gutterInPx}px 0 0`,
+                })}
+              </Column>
+              <Column width={secondItemWidth}>
+                {getItem({
+                  height,
+                  rowIndex,
+                  item: itemsToWideRow[1],
+                  padding: `0 ${gutterInPx}px 0 ${gutterInPx}px`,
+                })}
+              </Column>
+              {itemsToThinRow.map((item, index) => {
+                return (
+                  <Column
+                    width={thinColumnWidth}
+                    key={`triple-row-${rowIndex}-${index}`}
+                  >
+                    {getItem({
+                      height,
+                      rowIndex,
+                      item: item,
+                      padding: `0 
+                      ${
+                        index === itemsToThinRow.length - 1 ? 0 : gutterInPx
+                      }px 0 ${gutterInPx}px`,
+                    })}
+                  </Column>
+                );
+              })}
+            </Row>
+            {getDetailRow({rowIndex, height: rowHeight})}
+          </React.Fragment>
+        );
+        return {
+          row,
+          newItems: items.slice(clientColumnMaxCount),
+        };
+      } else {
+        const row = getWideSingleRow({item: items[0], rowIndex});
+        return {
+          row,
+          newItems: items.slice(1),
+        };
+      }
+    }
+    return {
+      row: null,
+      newItems: [],
+    };
+  };
+
+  const getLeftDoubleRow = ({
+    items,
+    rowIndex,
+  }: {
+    items: Array<ImageItemProps>;
+    rowIndex: number;
+  }) => {
+    const height =
+      clientColumnMaxCount > 1
+        ? rowHeight * 0.8 - gutterInPx
+        : rowHeight - gutterInPx;
+    if (items.length) {
+      if (clientColumnMaxCount >= 2) {
+        const columnCount =
+          clientColumnMaxCount <= 3 ? 2 : clientColumnMaxCount - 1;
+        const itemsToRow = items.slice(0, columnCount);
+        const wideColumnWidth = 16 - thinColumnWidth * (columnCount - 1);
+        const itemsToThinRow = itemsToRow.slice(1);
+
+        const row = (
+          <React.Fragment key={`wide-right-row-${rowIndex}`}>
+            <Row padding={`${gutterInPx * 2}px 0`}>
+              <Column width={wideColumnWidth}>
+                {getItem({
+                  height,
+                  rowIndex,
+                  item: itemsToRow[0],
+                  padding: `0 ${gutterInPx}px 0 0`,
+                })}
+              </Column>
+              {itemsToThinRow.map((item, index) => {
+                return (
+                  <Column
+                    width={thinColumnWidth}
+                    key={`wide-right-row-${rowIndex}-${index}`}
+                  >
+                    {getItem({
+                      height,
+                      rowIndex,
+                      item: item,
+                      padding: `0 
+                      ${
+                        index === itemsToThinRow.length - 1 ? 0 : gutterInPx
+                      }px 0 ${gutterInPx}px`,
+                    })}
+                  </Column>
+                );
+              })}
+            </Row>
+            {getDetailRow({rowIndex, height: rowHeight})}
+          </React.Fragment>
+        );
+        return {
+          row,
+          newItems: items.slice(columnCount),
+        };
+      } else {
+        const row = getWideSingleRow({item: items[0], rowIndex});
+        return {
+          row,
+          newItems: items.slice(1),
+        };
+      }
+    }
+    return {
+      row: null,
+      newItems: [],
+    };
+  };
+
+  const getTripleRow = ({
+    items,
+    rowIndex,
+    isThinItemFirst,
+  }: {
+    items: Array<ImageItemProps>;
+    rowIndex: number;
+    isThinItemFirst: boolean;
+  }) => {
+    const height =
+      clientColumnMaxCount > 2
+        ? rowHeight / 2 - gutterInPx
+        : rowHeight - gutterInPx;
+    if (items.length) {
+      if (clientColumnMaxCount >= 2) {
+        const itemsToRow = items.slice(0, clientColumnMaxCount);
+        const wideColumnWidth =
+          16 - thinColumnWidth * (clientColumnMaxCount - 2);
+        const firstItemWidth =
+          wideColumnWidth * (isThinItemFirst ? 0.369 : 0.631);
+        const secondItemWidth = wideColumnWidth - firstItemWidth;
+        const itemsToWideRow = itemsToRow.slice(0, 2);
+        const itemsToThinRow = itemsToRow.slice(2);
+
+        const row = (
+          <React.Fragment key={`triple-row-${rowIndex}`}>
+            <Row padding={`${gutterInPx * 2}px 0`}>
+              <Column width={firstItemWidth}>
+                {getItem({
+                  height,
+                  rowIndex,
+                  item: itemsToWideRow[0],
+                  padding: `0 ${gutterInPx}px 0 0`,
+                })}
+              </Column>
+              <Column width={secondItemWidth}>
+                {getItem({
+                  height,
+                  rowIndex,
+                  item: itemsToWideRow[1],
+                  padding: `0 ${gutterInPx}px 0 ${gutterInPx}px`,
+                })}
+              </Column>
+              {itemsToThinRow.map((item, index) => {
+                return (
+                  <Column
+                    width={thinColumnWidth}
+                    key={`triple-row-${rowIndex}-${index}`}
+                  >
+                    {getItem({
+                      height,
+                      rowIndex,
+                      item: item,
+                      padding: `0 
+                      ${
+                        index === itemsToThinRow.length - 1 ? 0 : gutterInPx
+                      }px 0 ${gutterInPx}px`,
+                    })}
+                  </Column>
+                );
+              })}
+            </Row>
+            {getDetailRow({rowIndex, height: rowHeight})}
+          </React.Fragment>
+        );
+        return {
+          row,
+          newItems: items.slice(clientColumnMaxCount),
+        };
+      } else {
+        const row = getWideSingleRow({item: items[0], rowIndex});
+        return {
+          row,
+          newItems: items.slice(1),
+        };
+      }
+    }
+    return {
+      row: null,
+      newItems: [],
+    };
+  };
+
+  const getRightTripleRow = ({
+    items,
+    rowIndex,
+  }: {
+    items: Array<ImageItemProps>;
+    rowIndex: number;
+  }) => getTripleRow({items, rowIndex, isThinItemFirst: true});
   const getJustifiedRow = ({
     items,
     rowIndex,
@@ -485,7 +807,7 @@ const Fresco: React.FunctionComponent<ComponentProps> = ({
     };
   };
 
-  const pageStructure = [
+  const pageOneStructure = [
     getWideLeftRow,
     getWideRightRow,
     getJustifiedRow,
@@ -493,12 +815,60 @@ const Fresco: React.FunctionComponent<ComponentProps> = ({
     getJustifiedRow,
   ];
 
+  const pageTwoStructure = [
+    getWideRightRow,
+    getLeftDoubleRow,
+    getJustifiedRow,
+    getRightDoubleRow,
+    getWideLeftRow,
+  ];
+
+  const pageThreeStructure = [
+    getLeftDoubleRow,
+    getTripleRow,
+    getRightDoubleRowTypeTwo,
+    getTripleRow,
+    getLeftDoubleRow,
+    getRightTripleRow,
+  ];
+
+  const pageFourStructure = [
+    getLeftDoubleRow,
+    getRightDoubleRow,
+    getJustifiedRow,
+  ];
+
+  const pageTypeStructures = [
+    {
+      type: 1,
+      structure: pageOneStructure,
+    },
+    {
+      type: 2,
+      structure: pageTwoStructure,
+    },
+    {
+      type: 3,
+      structure: pageThreeStructure,
+    },
+    {
+      type: 4,
+      structure: pageFourStructure,
+    },
+  ];
+
+  const getPageStructure = () =>
+    (pageTypeStructures.find(el => el.type === gridType) || {}).structure ||
+    pageOneStructure;
+
   const buildRows = () => {
     let items = images;
     const rows = [];
 
+    const structure = getPageStructure();
+
     while (items.length > 0) {
-      for (const rowFunc of pageStructure) {
+      for (const rowFunc of structure) {
         if (items.length <= clientColumnMaxCount) {
           const {row, newItems} = getJustifiedRow({
             items,

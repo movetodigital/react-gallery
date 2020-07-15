@@ -5,6 +5,7 @@ interface Props {
   gutterInPercent: number;
   aspectRatio: number;
   enableDetailView: boolean;
+  gridType: 1 | 2 | 3 | 4;
 }
 
 import {Fresco} from './Fresco';
@@ -31,6 +32,7 @@ export const FrescoExample: React.FunctionComponent<Props> = ({
   gutterInPercent,
   enableDetailView,
   aspectRatio,
+  gridType,
 }) => (
   <div style={{width: '1200px'}}>
     <Fresco
@@ -39,6 +41,7 @@ export const FrescoExample: React.FunctionComponent<Props> = ({
       gutterInPercent={gutterInPercent}
       enableDetailView={enableDetailView}
       aspectRatio={aspectRatio}
+      gridType={gridType}
     />
   </div>
 );

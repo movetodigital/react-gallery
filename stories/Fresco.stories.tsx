@@ -1,4 +1,4 @@
-import {boolean, number, withKnobs} from '@storybook/addon-knobs';
+import {boolean, number, select, withKnobs} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
 import React from 'react';
 
@@ -15,6 +15,16 @@ storiesOf('React Fresco', module)
           gutterInPercent={number('Gutter in %', 1)}
           enableDetailView={boolean('Enable detail view', false)}
           aspectRatio={number('Aspect ratio', 3)}
+          gridType={select(
+            'Grid type',
+            {
+              1: 1,
+              2: 2,
+              3: 3,
+              4: 4,
+            },
+            1
+          )}
         />
       );
     },
