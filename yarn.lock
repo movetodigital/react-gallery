@@ -2429,6 +2429,10 @@
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.3.tgz#bdfd69d61e464dcc81b25159c270d75a73c1a636"
 
+"@types/lodash@^4.14.157":
+  version "4.14.157"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.157.tgz#fdac1c52448861dfde1a2e1515dbc46e54926dc8"
+
 "@types/node@*":
   version "12.0.4"
   resolved "https://registry.npmjs.org/@types/node/-/node-12.0.4.tgz#46832183115c904410c275e34cf9403992999c32"
@@ -2798,8 +2802,8 @@ acorn-walk@^6.0.1:
   resolved "https://registry.npmjs.org/acorn-walk/-/acorn-walk-6.1.1.tgz#d363b66f5fac5f018ff9c3a1e7b6f8e310cc3913"
 
 acorn@^5.5.3:
-  version "5.7.3"
-  resolved "https://registry.npmjs.org/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
+  version "5.7.4"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.4.tgz#3e8d8a9947d0599a1796d10225d7432f4a4acf5e"
 
 acorn@^6.0.1, acorn@^6.0.7, acorn@^6.2.1:
   version "6.2.1"
@@ -6192,10 +6196,6 @@ inquirer@^6.2.2:
 interpret@^1.0.0, interpret@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
-
-intersection-observer@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.7.0.tgz#ee16bee978db53516ead2f0a8154b09b400bbdc9"
 
 invariant@2.2.4, invariant@^2.2.2, invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
