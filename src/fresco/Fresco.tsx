@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import chunk from 'lodash/chunk';
-import get from 'lodash/get';
 import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
@@ -768,7 +767,7 @@ const Fresco: React.FunctionComponent<ComponentProps> = ({
     const itemsToRow = items.slice(0, clientColumnMaxCount);
     if (items.length) {
       const row = (
-        <React.Fragment key={`justified-row-${get(items, '[0].src')}`}>
+        <React.Fragment key={`justified-row-${rowIndex}`}>
           <Row padding={`${gutterInPx * 2}px 0`}>
             {itemsToRow.map((item, index) => {
               return (

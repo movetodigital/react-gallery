@@ -1,6 +1,6 @@
 {
   "name": "@movetodigital/react-gallery",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "React gallery",
   "main": "build/release/index.js",
   "types": "build/release/index.d.ts",
