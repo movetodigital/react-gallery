@@ -214,6 +214,9 @@ const Story: React.FunctionComponent<ComponentProps> = ({
             paddingLeft,
             paddingRight,
           });
+          if (isLastPhoto && isLastAlbum) {
+            rows.push(row);
+          }
         } else {
           totalWidth = width + padding;
           rows.push(row);
@@ -224,6 +227,9 @@ const Story: React.FunctionComponent<ComponentProps> = ({
               paddingRight: gutter,
             },
           ];
+          if (isLastPhoto && isLastAlbum) {
+            rows.push(row);
+          }
         }
       });
     });
